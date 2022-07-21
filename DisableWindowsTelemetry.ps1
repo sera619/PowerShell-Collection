@@ -77,18 +77,16 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
     $x = $listBox.SelectedItem
     if($x -eq "Disable Telemetry"){
         Clear-Host
-        Write-Host "-: Windows Telemetry Disabler :-" -ForegroundColor Blue -Separator "|"
+        Write-Host "-: Windows Telemetry Disabler :-" -ForegroundColor Blue 
         Write-Host " "
         Write-Host "[Telemetry Disabler] - deactivate telemetry..." -ForegroundColor Red
         Write-Host " "
         Disable-Telemetry
         Write-Host "[Telemetry Disabler] - Windows Telemetry successfully disabled!`r`n`r`nThanks for using my software!" -ForegroundColor Yellow
-        Exit
         Exit-PSSession
     }
     elseif ($x -eq "Exit") {
         Exit-PSSession
-        Exit
     }
 
 }
