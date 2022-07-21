@@ -1,5 +1,4 @@
-#disable telemetry
-
+<# Disable Windows Telemetry #>
 function Disable-Telemetry {
         Write-Host "[Telemetry Disabler] - stop and disable DiagTrack service..." -ForegroundColor Yellow
         Get-Service -Name DiagTrack | Set-Service -Status Stopped -StartupType Disabled 
@@ -20,12 +19,7 @@ function Disable-Telemetry {
         Write-Host "[Telemetry Disabler] - disable Wifi Sense on newer Windows 10..." -ForegroundColor Yellow
         $path = "\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\features"
         Get-ChildItem HKLM:$path  | Where-Object { $_.Name.EndsWith("-1000") } | Set-ItemProperty -name FeatureStates -Value 0
-      
 }
-      
-      
-
-
 
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
@@ -82,7 +76,7 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
         Write-Host "[Telemetry Disabler] - deactivate telemetry..." -ForegroundColor Red
         Write-Host " "
         Disable-Telemetry
-        Write-Host "[Telemetry Disabler] - Windows Telemetry successfully disabled!`r`n`r`nThanks for using my software!" -ForegroundColor Yellow
+        Write-Host "[Telemetry Disabler] - Windows Telemetry successfully disabled!`r`n`r`nThanks for using my software!" -ForegroundColor Blue
         Exit-PSSession
     }
     elseif ($x -eq "Exit") {
